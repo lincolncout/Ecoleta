@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>Resultado da pesquisa</title>
+{% endblock title %}
+{% block styles %}
+    <link rel="stylesheet" href="/styles/search-results.css">
+{% endblock styles %}
+
+{% set pageId = "page-search-results" %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+
+
+    <main>
+        {# n-if #}
+        {% if total > 0 %}
+            <h4>
+                <strong>
+                    {{ total }} pontos
+                </strong>
+                encontrados
+            </h4>
+            {# pegando o conteúdo do banco de dados em object#}
+            {# {{ places }} #}
+
+            <div class="cards">
+                {# n-for --> places do server.js#}
+                {% for place in places %}
+
+                    <div class="card">
+                        <!--imagens são pegas no unspalsh.com-->
+                        <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <h1>{{ place.name }}</h1>
+                        <h3>{{ place.items }}</h3>
+                        <!-- br -> quebra de linha º = altgr + ] -->
+                        <p>
+                            {{ place.city }},
+                            {{ place.state }}
+                            <br/>
+                            {{ place.adress }}
+                            <br/>
+                            {{ place.adress2 }}
+                        </p>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {%else%}
+
+            <h4><strong>Nenhum</strong> local encontrado</h4>
+
+        {% endif %}
+
+    </main>
+{% endblock content %}
+
+</div>
+</body>
+</html>

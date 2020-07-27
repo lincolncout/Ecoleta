@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!--
+    site para pegar imagens boas: unsplash.com
+-->
+<!--
+    HTML
+    Hypertext
+        hiper texto
+    Markup
+        Marcação de texto
+    Language
+        Linguagem
+-->
+<!--atalhos vscode:
+        atalho control + b  
+        atalho control + ; = fazer comentario 
+        atalho control + d = selecionar o elemento e o próxima aparição dele
+        atalho control + ' = abrir e fechar terminal
+-->
+
+<!--
+    quando eu clico open with liver server:
+        http://127.0.0.1:5500/index.html
+        127.0.0.1 -> máquina local(local host)
+        5500 -> abriu a porta (entrar no servidor)
+        /index.html -> colocou o index.html para funcionar
+-->
+<!--
+    template engine -> html de uma maneira inteligente(transforma html com funções, estruturas de repetições, if-else)
+    ex: nunjucks
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# caso não tenha título na página ele coloca por padrão ecoleta #}
+    {% block title %}
+        <title>Ecoleta</title>
+    {% endblock title %}
+
+    <!-- fonts google- roboto 300 light 700 bold-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <!--link:css-->
+    <link rel="stylesheet" href="/styles/main.css">
+    {# caso tenha um block styles na página, ela será colocada nesse block #}
+    {% block styles %}
+    {% endblock styles %}
+
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+<body>
+    <div id= "{{ pageId }}">
+       {% block content %}
+       {% endblock content %}
+    </div>
+
+    {% block modal %}
+    {% endblock modal %}
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+</body>
+</html>
